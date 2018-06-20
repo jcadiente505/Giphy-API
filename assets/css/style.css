@@ -3,3 +3,18 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+#ratings {
+    color: white;
+}
+
+#ratingssection {
+    text-align: center;
+    font-size: 10px;
+    width: 200;
+    display: block;
+}
+
+#ratedgif {
+    float: left;
+}

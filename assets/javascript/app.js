@@ -69,8 +69,22 @@ function gifDisplay() {
         url: queryURL,
         method: "GET"
     }).then(function (response){ 
-
+// goes through the length of the giphy pictures which we set too 10
         for (var j = 0; j < response.data.length; j++) {
+
+            var activeGif = response.data[j].images.fixed_width.url;
+            var stillGif = response.data[j].images.fixed_width_still.url;
+            var rating = "Rating: " + (response.data[j].rating).toUpperCase();
+
+            var actorGif = $("<img>");
+            var ratingsection = $("<div id='ratingsection'>" + rating + "</div>");
+// this sets the gif to the still state also adds the active state which we will switch on click
+            actorGif.attr({"active": active, "still": still, "src": still, "state": "still"});
+
+            var ratedGif = $("<div id=ratedgif>");
+            ratedGif.prepend(ratingsection, actorGif);
+// displays the gif w/ rating
+            $("#gifsection").prepend(ratedGif);
             
         }
 
