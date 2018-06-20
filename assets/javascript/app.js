@@ -1,4 +1,4 @@
-document.ready(function () {
+
     // beginning actors array, we will add searched actors into here
     var actors = ["Jim Carrey", "Dwayne Johnson", "Robin Williams"];
     // function to display the gifs of actors
@@ -74,7 +74,29 @@ document.ready(function () {
         actors.push(newActor);
         console.log(actors)
         $("actor-input").val(" ");
-    })
-});
+        // run the displayButtons function and update the page
+        displayButtons();
+    });
+    // display buttons on page load
+    displayButtons();
+    // bind the gifDisplay function too any button with id of actor
+    $(document).on("click", "#actor", gifDisplay);
+    // bind the gifStates function top any image with class of actorGif
+    $(document).on("click", ".actorGif", gifStates);
+
+    function gifStates() {
+        // create a variable that listens for the button selected and the state it is in
+        var defaultState = $(this).attr("data-state");
+        // conditional that checks the state and switches them on click?
+        // not sure of execution ask TA
+        if (state === "still") {
+            $(this).attr("src", $(this).attr("data-animate"));
+            $(this).attr("data-state", "animate");
+        } else {
+            $(this).attr("src", $(this).attr("data-still"));
+            $(this).attr("data-state", "still");
+        };
+    };
+
 
 
