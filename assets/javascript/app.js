@@ -5,13 +5,12 @@ var gifs = "";
 // this Function will display all buttons at the top of the page
 function actorBtns() {
 
-    $("#actor-search").val().trim();
+    $("#search-btn").val().trim();
 
-    for (i = 0; i < topics.length; i++) {
+    for (var i = 0; i < topics.length; i++) {
 
     var actorButton = $("<button class='btn btn-warning'>");
     actorButton.addClass("actor")
-    actorButton.attr("type", "button");
     actorButton.attr("data-name", topics[i])
     actorButton.text(topics[i]);
     $("#actorsection").append(actorButton);
@@ -28,12 +27,12 @@ $("search-btn").on("click", function(event){
     var actorInput = $("#actor-search").val().trim();
     var actorName = $(this).attr("data-name")
 
-    var queryURL = "https://api.giphy.com/v1/gifs/search?" + actorName + "&api_key=WQ4ApiFaUDoztB9gT5Es6XglEjXI3acX&limit=10"
+    var queryURL = "https://api.giphy.com/v1/gifs/search?" + actorInput + "&api_key=WQ4ApiFaUDoztB9gT5Es6XglEjXI3acX&limit=4"
 
     $.ajax({
         url: queryURL,
         method: "GET"
-    }).then(function (response){
+    }).done(function (response){
 
         if (response.pagination.total_count >= 10) {
 // push the actor searched for into the topics array
@@ -49,17 +48,13 @@ $("search-btn").on("click", function(event){
         else {
             $("#gifsection").html("<h1>Sorry, there's only " + response.pagination.total_count + "Try a Different Actor!</h1>")
         };
-
-        console.log(queryURL);
-        console.log(response);
+        $("#actor-search").val(" ");
     });
 });
 
 $(document).on("click", ".actor", gifDisplay)
 
 function gifDisplay() {
-
-    $("#gifsection").empty();
 
     var actorName = $(this).attr("data-name")
 
@@ -68,7 +63,7 @@ function gifDisplay() {
     $.ajax({
         url: queryURL,
         method: "GET"
-    }).then(function (response){ 
+    }).done(function (response){ 
 // goes through the length of the giphy pictures which we set too 10
         for (var j = 0; j < response.data.length; j++) {
 
@@ -85,8 +80,21 @@ function gifDisplay() {
             ratedGif.prepend(ratingsection, actorGif);
 // displays the gif w/ rating
             $("#gifsection").prepend(ratedGif);
-            
-        }
+
+// this will be the start/stop function of the gifs
+            $(actorGif).on("click", function(event){
+
+                var gifState = $(this).attr("state");
+                var gifsource = $(this).attr("src");
+// this conditional registers the state of the gif and changes from still to active on click
+                if (gifState === "still") {
+                    $(this).attr("src", $(this).attr("active"));
+                    $(this).attr("state", "active"); }
+                else {
+                    $(this).attr("src", $(this).attr("still"));
+                    $(this).attr("state", "still"); } 
+            });
+        };
 
     });
 
