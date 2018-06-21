@@ -3,6 +3,8 @@
     var actors = ["Jim Carrey", "Dwayne Johnson", "Robin Williams"];
     // function to display the gifs of actors
     function gifDisplay() {
+        // clear content for new gifs
+        $("#gifsection").empty();
         // grabs the data attribute from the selection
         var actorName = $(this).data("search");
         console.log(actorName);
@@ -51,6 +53,8 @@
     };
     // function too loop through array and display buttons
     function displayButtons() {
+        // clear div so we don't have repeat buttons
+        $("#actorsection").empty();
         // loop through our array
         for (var i = 0; i < actors.length; i++) {
             // create a variable for our dynamic buttons
@@ -63,6 +67,23 @@
             $("#actorsection").append(actorBtn);
         }
     }
+
+    function gifStates() {
+        // create a variable that listens for the button selected and the state it is in
+        var defaultState = $(this).attr("data-state");
+        // conditional that checks the state and switches them on click?
+        // not sure of execution ask TA
+        if (defaultState === "still") {
+
+            $(this).attr("src", $(this).attr("data-animate"));
+            $(this).attr("data-state", "animate");
+
+        } else {
+            
+            $(this).attr("src", $(this).attr("data-still"));
+            $(this).attr("data-state", "still");
+        };
+    };
 
 
     $("#actor-search").on("click", function (event) {
@@ -83,20 +104,5 @@
     $(document).on("click", "#actor", gifDisplay);
     // bind the gifStates function top any image with class of actorGif
     $(document).on("click", ".actorGif", gifStates);
-
-    function gifStates() {
-        // create a variable that listens for the button selected and the state it is in
-        var defaultState = $(this).attr("data-state");
-        // conditional that checks the state and switches them on click?
-        // not sure of execution ask TA
-        if (defaultState === "still") {
-            $(this).attr("src", $(this).attr("data-animate"));
-            $(this).attr("data-state", "animate");
-        } else {
-            $(this).attr("src", $(this).attr("data-still"));
-            $(this).attr("data-state", "still");
-        };
-    };
-
 
 
