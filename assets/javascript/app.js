@@ -4,7 +4,7 @@
     // function to display the gifs of actors
     function gifDisplay() {
         // grabs the data attribute from the selection
-        var actorName = $(this).data("actor");
+        var actorName = $(this).data("search");
         console.log(actorName);
         // Giphy API with a limit set too 10
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + actorName + "&api_key=WQ4ApiFaUDoztB9gT5Es6XglEjXI3acX&limit=10";
@@ -89,7 +89,7 @@
         var defaultState = $(this).attr("data-state");
         // conditional that checks the state and switches them on click?
         // not sure of execution ask TA
-        if (state === "still") {
+        if (defaultState === "still") {
             $(this).attr("src", $(this).attr("data-animate"));
             $(this).attr("data-state", "animate");
         } else {
