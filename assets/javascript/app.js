@@ -23,7 +23,7 @@
             // loop through the response.data 10 times **which we set in the URL**
             for (var i = 0; i < results.length; i++) {
                 // store our HTML div where the actor gifs will go into a variable
-                var actorDiv = $("<div class='col-md-4'>");
+                var actorDiv = $("<div class='col-md-5'>");
                 // grab the rating for each response
                 var rating = results[i].rating;
                 // grab the src's for the still and active states

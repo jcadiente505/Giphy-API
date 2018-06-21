@@ -20,11 +20,36 @@ body {
 }
 
 .actorGif {
-    padding: 20px;
+    padding-top: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
     width: 250px;
     height: 250px;
+    float: right;
 }
 
 #actor {
     position: inherit;
+}
+
+#actorsection {
+    display: inline-grid;
+}
+
+p{
+    color: white;
+    margin: 0;
+    font-size: 20px;
+    text-align: center;
+}
+
+.size {
+    position: absolute;
+    z-index: 5;
+}
+
+#gifsection {
+    position: relative;
+    z-index: -5;
 }
