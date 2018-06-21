@@ -75,8 +75,8 @@
         // not sure of execution ask TA
         if (defaultState === "still") {
 
-            $(this).attr("src", $(this).attr("data-animate"));
-            $(this).attr("data-state", "animate");
+            $(this).attr("src", $(this).attr("data-active"));
+            $(this).attr("data-state", "active");
 
         } else {
             
