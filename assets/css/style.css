@@ -31,10 +31,11 @@ body {
 
 #actor {
     position: inherit;
+    width: 200px;
 }
 
 #actorsection {
-    display: inline-grid;
+    display: initial;
 }
 
 p{
@@ -44,12 +45,3 @@ p{
     text-align: center;
 }
 
-.size {
-    position: absolute;
-    z-index: 5;
-}
-
-#gifsection {
-    position: relative;
-    z-index: -5;
-}

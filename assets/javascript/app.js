@@ -85,6 +85,10 @@
         };
     };
 
+    function addGifs() {
+        // add more gifs to the page
+    }
+
 
     $("#actor-search").on("click", function (event) {
 
